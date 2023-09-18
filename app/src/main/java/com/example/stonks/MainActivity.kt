@@ -3,12 +3,17 @@ package com.example.stonks
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.stonks.ui.theme.StonksTheme
 
@@ -22,7 +27,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    loginPage()
                 }
             }
         }
@@ -30,17 +35,25 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun loginPage(modifier: Modifier = Modifier) {
+   Box{
+       val image = painterResource(R.drawable.stonksman)
+       Image(
+           painter = image,
+           contentDescription = null,
+
+           modifier = Modifier.fillMaxSize(),
+           contentScale = ContentScale.Crop,
+           alpha = 0.8F
+       )
+
+   }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun loginPreview() {
     StonksTheme {
-        Greeting("Android")
+        loginPage()
     }
 }

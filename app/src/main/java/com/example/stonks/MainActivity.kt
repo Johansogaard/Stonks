@@ -80,6 +80,7 @@ fun loginPage(modifier: Modifier = Modifier) {
                .fillMaxWidth()
                .height(screenHeight / 3)) {
                frontPageBtns()
+               //test git
            }
 
        }

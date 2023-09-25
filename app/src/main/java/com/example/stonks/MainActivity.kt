@@ -11,7 +11,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -20,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -56,15 +59,27 @@ fun loginPage(modifier: Modifier = Modifier) {
            alpha = 0.8F
 
        )
-       Column {
-           Row {
+       Column(modifier = Modifier.fillMaxSize())
+       {
+           val configuration = LocalConfiguration.current
+           val screenHeight = configuration.screenHeightDp.dp
+           val screenWidth = configuration.screenWidthDp.dp
+
+           Row( modifier = Modifier
+               .fillMaxWidth()
+               .height(screenHeight / 3)) {
 
            }
-           Row {
+           Row( modifier = Modifier
+               .fillMaxWidth()
+               .height(screenHeight / 3)) {
+
+
+           }
+           Row( modifier = Modifier
+               .fillMaxWidth()
+               .height(screenHeight / 3)) {
                frontPageBtns()
-           }
-           Row {
-
            }
 
        }
@@ -77,7 +92,7 @@ fun loginPage(modifier: Modifier = Modifier) {
 fun frontPageBtns(modifier: Modifier = Modifier)
 {
     Column(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
 
@@ -86,14 +101,18 @@ fun frontPageBtns(modifier: Modifier = Modifier)
     )
     {
 
-            Button(onClick = { /*TODO*/ }) {
+            Button(
+                onClick = { /*TODO*/ },
+                modifier = Modifier.weight(2F)
+                ) {
                 Text("Login")
 
 
 
             }
-            Button(onClick = { /*TODO*/ }) {
-                Text("Sign Up")
+            Button(onClick = { /*TODO*/ },
+                modifier = Modifier.weight(2F)) {
+                Text("Sign up")
 
             }
         }

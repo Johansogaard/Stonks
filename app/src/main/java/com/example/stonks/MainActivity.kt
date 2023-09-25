@@ -4,6 +4,7 @@ import android.inputmethodservice.Keyboard
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -18,12 +19,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
@@ -59,7 +64,7 @@ fun loginPage(modifier: Modifier = Modifier) {
 
            modifier = Modifier.fillMaxSize(),
            contentScale = ContentScale.Crop,
-           alpha = 0.8F
+           colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply { setToSaturation(0f) })
 
        )
        Column(modifier = Modifier.fillMaxSize())
@@ -111,7 +116,9 @@ fun frontPageBtns(modifier: Modifier = Modifier)
                 modifier = Modifier
 
                     .weight(1F)
-                    .fillMaxWidth(0.5f)
+                    .fillMaxWidth(0.5f),
+                    border = BorderStroke(5.dp, Color.White),
+                    colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.White)
                 ) {
                 Text("Login")
                 }
@@ -121,7 +128,9 @@ fun frontPageBtns(modifier: Modifier = Modifier)
             Button(onClick = { /*TODO*/ },
                 modifier = Modifier
                     .weight(1F)
-                    .fillMaxWidth(0.5f)) {
+                    .fillMaxWidth(0.5f),
+                    border = BorderStroke(5.dp, Color.White),
+                    colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.White)) {
                 Text("Sign up")
 
             }
